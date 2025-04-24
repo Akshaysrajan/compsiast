@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Compass | Essential Resources for Computer Enthusiasts</title>
+    <style>
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #2c68ff;
+            --background-color: #f8f9fa;
+            --card-color: #ffffff;
+            --text-color: #333333;
+            --text-secondary: #666666;
+            --shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0 20px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.4rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        h1 span {
+            color: var(--secondary-color);
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        
+        .category-filter {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .category-btn {
+            background-color: transparent;
+            border: 1px solid var(--secondary-color);
+            color: var(--secondary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .search-container {
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 30px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            padding-bottom: 40px;
+        }
+        
+        .resource-card {
+            background-color: var(--card-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .resource-title {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+        
+        .resource-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        
+        .resource-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .tag {
+            background-color: #eef2ff;
+            color: var(--secondary-color);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+        
+        .resource-link {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .resource-link:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+        
+        /* Dark mode toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+        }
+        
+        /* Dark mode styles */
+        body.dark-mode {
+            --background-color: #121212;
+            --card-color: #1e1e1e;
+            --text-color: #e0e0e0;
+            --text-secondary: #aaaaaa;
+            --shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .theme-toggle {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tech <span>Compass</span></h1>
+        <p class="subtitle">Essential websites every computer enthusiast should bookmark</p>
+        
+        <div class="search-container">
+            <input type="text" class="search-input" id="search-input" placeholder="Search resources..." onkeyup="filterResources()">
+        </div>
+        
+        <div class="category-filter">
+            <button class="category-btn active" data-category="all">All</button>
+            <button class="category-btn" data-category="news">News & Updates</button>
+            <button class="category-btn" data-category="learning">Learning</button>
+            <button class="category-btn" data-category="tools">Tools & Utilities</button>
+            <button class="category-btn" data-category="community">Communities</button>
+            <button class="category-btn" data-category="hardware">Hardware</button>
+            <button class="category-btn" data-category="software">Software</button>
+        </div>
+    </header>
+    
+    <main>
+        <div class="resources-grid" id="resources-container">
+            <!-- News & Updates -->
+            <div class="resource-card" data-categories="news">
+                <div class="card-content">
+                    <h3 class="resource-title">Ars Technica</h3>
+                    <p class="resource-description">In-depth coverage of technology news with a focus on computing, gadgets, gaming, and tech policy.</p>
+                    <div class="resource-tags">
+                        <span class="tag">News</span>
+                        <span class="tag">Reviews</span>
+                        <span class="tag">Analysis</span>
+                    </div>
+                    <a href="https://arstechnica.com" class="resource-link" target="_blank">Visit Website →</a>
+                </div>
+            </div>
+            
+            <div class="resource-card" data-categories="news software">
+                <div class="card-content">
+                    <h3 class="resource-title">Hacker News</h3>
+                    <p class="resource-description">Social news website focusing on computer science and entrepreneurship, run by Y Combinator.</p>
+                    <div class="resource-tags">
+                        <span class="tag">News</span>
+                        <span class="tag">Discussions</span>
+                        <span class="tag">Startups</span>
+                    </div>
+                    <a href="https://news.ycombinator.com" class="resource-link" target="_blank">Visit Website →</a>
+                </div>
+            </div>
+            
+            <div class="resource-card" data-categories="news hardware">
+                <div class="card-content">
+                    <h3 class="resource-title">AnandTech</h3>
+                    <p class="resource-description">Technical hardware analysis with in-depth reviews of processors, graphics cards, and other PC components.</p>
+                    <div class="resource-tags">
+                        <span class="tag">Hardware</span>
+                        <span class="tag">Reviews</span>
+                        <span class="tag">Benchmarks</span>
+                    </div>
+                    <a href="https://www.anandtech.com" class="resource-link" target="_blank">Visit Website →</a>
+                </div>
+            </div>
+            
+            <!-- Learning -->
+            <div class="resource-card" data-categories="learning">
+                <div class="card-content">
+                    <h3 class="resource-title">freeCodeCamp</h3>
+                    <p class="resource-description">Free coding courses covering web development, data science, and machine learning with hands-on projects.</p>
+                    <div class="resource-tags">
+                        <span class="tag">Learning</span>
+                        <span class="tag">Coding</span>
+                        <span class="tag">Free</span>
+                    </div>
+                    <a href="https://www.freecodecamp.org" class="resource-link" target="_blank">Visit Website →</a>
+                </div>
+            </div>
+            
+            <div class="resource-card" data-categories="learning">
+                <div class="card-content">
+                    <h3 class="resource-title">MIT OpenCourseWare</h3>
+                    <p class="resource-description">Free public access to MIT course materials for computer science, electrical engineering, and more.</p>
+                    <div class="resource-tags">
+                        <span class="tag">Academic</span>
+                        <span class="tag">Courses</span>
+                        <span class="tag">CS Education</span>
+                    </div>
+                    <a href="https://ocw.mit.edu" class="resource-link" target="_blank">Visit Website →</a>
+                </div>
+            </div>
+            
+            <!-- Tools & Utilities -->
+            <div class="resource-card" data-categories="tools software">
+                <div class="card-content">
+                    <h3 class="resource-title">GitHub</h3>
+                    <p class="resource-description">Platform for version control and collaboration for software development projects.</p>
+                    <div class="resource-tags">
+                        <span class="tag">Development</span>
+                        <span class="tag">Collaboration</span>
+                        <span class="tag">Open Source</span>
+                    </div>
+                    <a href="https://github.com" class="resource-link" target="_blank">Visit Website →</a>
+                </div>
+            </div>
+            
+            <div class="resource-card" data-categories="tools software">
+                <div class="card-content">
+                    <h3 class="resource-title">Stack Overflow</h3>
+                    <p class="resource-description">Community-driven Q&A for programmers to solve coding problems and share knowledge.</p>
+                    <div class="resource-tags">
+                        <span class="tag">Q&A</span>
+                        <span class="tag">Community</span>
+                        <span class="tag">Troubleshooting</span>
+                    </div>
+                    <a href="https://stackoverflow.com" class="resource-link" target="_blank">Visit Website →</a>
+                </div>
+            </div>
+            
+            <!-- Community -->
+            <div class="resource-card" data-categories="community">
+                <div class="card-content">
+                    <h3 class="resource-title">Reddit r/buildapc</h3>
+                    <p class="resource-description">Community-driven subreddit for PC building advice, troubleshooting, and hardware recommendations.</p>
+                    <div class="resource-tags">
+                        <span class="tag">PC Building</span>
+                        <span class="tag">Community</span>
+                        <span class="tag">Advice</span>
+                    </div>
+                    <a href="https://www.reddit.com/r/buildapc/" class="resource-link" target="_blank">Visit Website →</a>
+                </div>
+            </div>
+            
+            <div class="resource-card" data-categories="community news">
+                <div class="card-content">
+                    <h3 class="resource-title">LWN.net</h3>
+                    <p class="resource-description">In-depth coverage of Linux and open source development news for technical readers.</p>
+                    <div class="resource-tags">
+                        <span class="tag">Linux</span>
+                        <span class="tag">Open Source</span>
+                        <span class="tag">Technical</span>
+                    </div>
+                    <a href="https://lwn.net" class="resource-link" target="_blank">Visit Website →</a>
+                </div>
+            </div>
+            
+            <!-- Hardware -->
+            <div class="resource-card" data-categories="hardware">
+                <div class="card-content">
+                    <h3 class="resource-title">PCPartPicker</h3>
+                    <p class="resource-description">System builder tool that helps select compatible components and find the best prices.</p>
+                    <div class="resource-tags">
+                        <span class="tag">PC Building</span>
+                        <span class="tag">Compatibility</span>
+                        <span class="tag">Price Comparison</span>
+                    </div>
+                    <a href="https://pcpartpicker.com" class="resource-link" target="_blank">Visit Website →</a>
+                </div>
+            </div>
+            
+            <div class="resource-card" data-categories="hardware news">
+                <div class="card-content">
+                    <h3 class="resource-title">Tom's Hardware</h3>
+                    <p class="resource-description">News, reviews, and guides covering PC components, with in-depth testing and benchmarks.</p>
+                    <div class="resource-tags">
+                        <span class="tag">Hardware Reviews</span>
+                        <span class="tag">News</span>
+                        <span class="tag">Benchmarks</span>
+                    </div>
+                    <a href="https://www.tomshardware.com" class="resource-link" target="_blank">Visit Website →</a>
+                </div>
+            </div>
+            
+            <!-- Software -->
+            <div class="resource-card" data-categories="software tools">
+                <div class="card-content">
+                    <h3 class="resource-title">Ninite</h3>
+                    <p class="resource-description">Tool to install and update multiple programs at once without toolbars or extra software.</p>
+                    <div class="resource-tags">
+                        <span class="tag">Software</span>
+                        <span class="tag">Installer</span>
+                        <span class="tag">Utility</span>
+                    </div>
+                    <a href="https://ninite.com" class="resource-link" target="_blank">Visit Website →</a>
+                </div>
+            </div>
+            
+            <div class="resource-card" data-categories="software news">
+                <div class="card-content">
+                    <h3 class="resource-title">AlternativeTo</h3>
+                    <p class="resource-description">Find alternatives to software applications based on user recommendations.</p>
+                    <div class="resource-tags">
+                        <span class="tag">Software</span>
+                        <span class="tag">Alternatives</span>
+                        <span class="tag">Recommendations</span>
+                    </div>
+                    <a href="https://alternativeto.net" class="resource-link" target="_blank">Visit Website →</a>
+                </div>
+            </div>
+            
+            <!-- More Resources -->
+            <div class="resource-card" data-categories="learning tools">
+                <div class="card-content">
+                    <h3 class="resource-title">Awesome Lists on GitHub</h3>
+                    <p class="resource-description">Curated lists of awesome frameworks, libraries, software and resources for various technologies.</p>
+                    <div class="resource-tags">
+                        <span class="tag">Curated Lists</span>
+                        <span class="tag">Resources</span>
+                        <span class="tag">Libraries</span>
+                    </div>
+                    <a href="https://github.com/sindresorhus/awesome" class="resource-link" target="_blank">Visit Website →</a>
+                </div>
+            </div>
+            
+            <div class="resource-card" data-categories="news software">
+                <div class="card-content">
+                    <h3 class="resource-title">The Verge</h3>
+                    <p class="resource-description">News and reviews covering technology, science, art, and culture with a focus on consumer tech.</p>
+                    <div class="resource-tags">
+                        <span class="tag">Tech News</span>
+                        <span class="tag">Reviews</span>
+                        <span class="tag">Culture</span>
+                    </div>
+                    <a href="https://www.theverge.com" class="resource-link" target="_blank">Visit Website →</a>
+                </div>
+            </div>
+            
+            <div class="resource-card" data-categories="learning">
+                <div class="card-content">
+                    <h3 class="resource-title">Coursera</h3>
+                    <p class="resource-description">Online platform offering courses in computer science, data science, and other tech fields from top universities.</p>
+                    <div class="resource-tags">
+                        <span class="tag">Online Courses</span>
+                        <span class="tag">Certificates</span>
+                        <span class="tag">University</span>
+                    </div>
+                    <a href="https://www.coursera.org" class="resource-link" target="_blank">Visit Website →</a>
+                </div>
+            </div>
+            
+            <div class="resource-card" data-categories="tools software">
+                <div class="card-content">
+                    <h3 class="resource-title">Chocolatey</h3>
+                    <p class="resource-description">Package manager for Windows that automates software installation, configuration, and upgrading.</p>
+                    <div class="resource-tags">
+                        <span class="tag">Windows</span>
+                        <span class="tag">Package Manager</span>
+                        <span class="tag">Automation</span>
+                    </div>
+                    <a href="https://chocolatey.org" class="resource-link" target="_blank">Visit Website →</a>
+                </div>
+            </div>
+            
+            <div class="resource-card" data-categories="community learning">
+                <div class="card-content">
+                    <h3 class="resource-title">Dev.to</h3>
+                    <p class="resource-description">Community platform where developers share ideas, help each other grow, and connect with like-minded individuals.</p>
+                    <div class="resource-tags">
+                        <span class="tag">Community</span>
+                        <span class="tag">Blog</span>
+                        <span class="tag">Learning</span>
+                    </div>
+                    <a href="https://dev.to" class="resource-link" target="_blank">Visit Website →</a>
+                </div>
+            </div>
+            
+            <div class="resource-card" data-categories="hardware tools">
+                <div class="card-content">
+                    <h3 class="resource-title">UserBenchmark</h3>
+                    <p class="resource-description">Tool to test PC performance and compare hardware components based on real-world benchmarks.</p>
+                    <div class="resource-tags">
+                        <span class="tag">Benchmarks</span>
+                        <span class="tag">Performance</span>
+                        <span class="tag">Comparison</span>
+                    </div>
+                    <a href="https://www.userbenchmark.com" class="resource-link" target="_blank">Visit Website →</a>
+                </div>
+            </div>
+            
+            <div class="resource-card" data-categories="news community">
+                <div class="card-content">
+                    <h3 class="resource-title">Slashdot</h3>
+                    <p class="resource-description">Social news website focusing on technology and science news with community discussions.</p>
+                    <div class="resource-tags">
+                        <span class="tag">News</span>
+                        <span class="tag">Tech</span>
+                        <span class="tag">Discussion</span>
+                    </div>
+                    <a href="https://slashdot.org" class="resource-link" target="_blank">Visit Website →</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>© 2025 Tech Compass | Essential resources for computer enthusiasts</p>
+    </footer>
+    
+    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌓</button>
+    
+    <script>
+        // Theme toggle
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        }
+        
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+        }
+        
+        // Category filtering
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                categoryButtons.forEach(b => b.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Filter resources
+                const category = button.getAttribute('data-category');
+                filterByCategory(category);
+            });
+        });
+        
+        function filterByCategory(category) {
+            const cards = document.querySelectorAll('.resource-card');
+            
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-categories').includes(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
+        // Search functionality
+        function filterResources() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const cards = document.querySelectorAll('.resource-card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('.resource-title').textContent.toLowerCase();
+                const description = card.querySelector('.resource-description').textContent.toLowerCase();
+                const tags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase());
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm) || tags.some(tag => tag.includes(searchTerm))) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
